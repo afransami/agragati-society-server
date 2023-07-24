@@ -32,6 +32,7 @@ async function run() {
   try {
    
     const usersCollection = client.db("agragati-society").collection("users");
+    const membersFormCollection = client.db("agragati-society").collection("membersForm");
     // const selectedSeatCollection = client.db("porjotok-bus-service").collection("selected-seat");
     // const usersCollection = client.db("porjotok-bus-service").collection("users");
     // const searchCollection = client.db("porjotok-bus-service").collection("search");
@@ -54,6 +55,15 @@ async function run() {
         const result = await usersCollection.updateOne(query, updateDoc, options)
         console.log(result)
         res.send(result)
+      })
+
+
+    //    members form upload
+       app.post('/membersForm', async (req, res) => {
+        const membersForm = req.body;                  
+        const result = await membersFormCollection.insertOne(membersForm);
+        res.send(result) 
+        console.log(result); 
       })
 
 
