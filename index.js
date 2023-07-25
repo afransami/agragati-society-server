@@ -32,7 +32,7 @@ async function run() {
   try {
    
     const usersCollection = client.db("agragati-society").collection("users");
-    const membersFormCollection = client.db("agragati-society").collection("membersForm");
+    const membersPaymentsCollection = client.db("agragati-society").collection("membersPayments");
     // const selectedSeatCollection = client.db("porjotok-bus-service").collection("selected-seat");
     // const usersCollection = client.db("porjotok-bus-service").collection("users");
     // const searchCollection = client.db("porjotok-bus-service").collection("search");
@@ -59,9 +59,9 @@ async function run() {
 
 
     //    members form upload
-       app.post('/membersForm', async (req, res) => {
-        const membersForm = req.body;                  
-        const result = await membersFormCollection.insertOne(membersForm);
+       app.post('/membersPayments', async (req, res) => {
+        const membersPayments = req.body;                  
+        const result = await membersPaymentsCollection.insertOne(membersPayments);
         res.send(result) 
         console.log(result); 
       })
